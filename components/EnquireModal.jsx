@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -27,6 +27,7 @@ import { useForm } from "react-hook-form";
 
 export default function EnquireModal({ product, colors }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   const {
     handleSubmit,
@@ -36,6 +37,7 @@ export default function EnquireModal({ product, colors }) {
   } = useForm();
 
   function onSubmit(values) {
+    setIsLoading(true);
     fetch("https://formsubmit.co/ajax/harsimransinghbarki@gmail.com", {
       method: "POST",
       headers: {
@@ -61,6 +63,7 @@ export default function EnquireModal({ product, colors }) {
           duration: 9000,
           isClosable: true,
         });
+        setIsLoading(false);
         handleClose();
       })
       .catch((error) => {
@@ -71,6 +74,7 @@ export default function EnquireModal({ product, colors }) {
           duration: 9000,
           isClosable: true,
         });
+        setIsLoading(false);
         handleClose();
       });
   }
@@ -189,7 +193,7 @@ export default function EnquireModal({ product, colors }) {
 
             <ModalFooter>
               <Button
-                isLoading={isSubmitting}
+                isLoading={isLoading}
                 variant="solid"
                 type="submit"
                 colorScheme="green"
