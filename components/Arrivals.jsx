@@ -1,20 +1,23 @@
 import React from "react";
-import { Heading, Flex, Box } from "@chakra-ui/react";
+import { Heading, Grid, Box } from "@chakra-ui/react";
 import Data from "../storedata.json";
 import ProductCard from "./ProductCard";
 
 function Arrivals() {
-  console.log(Data);
   return (
     <Box>
       <Heading fontSize="2xl" fontWeight="700">
         New Arrivals
       </Heading>
-      <Flex mt={6} gap={10} wrap="wrap">
+      <Grid
+        mt={6}
+        gap={10}
+        gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+      >
         {Data.map((product, idx) => {
           return <ProductCard key={idx} {...product} />;
         })}
-      </Flex>
+      </Grid>
     </Box>
   );
 }

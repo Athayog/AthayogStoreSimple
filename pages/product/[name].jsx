@@ -1,51 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { Box, Flex, Button, Text, Tag } from "@chakra-ui/react";
-import { ArrowBackIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-import Link from "next/link";
-import Data from "storedata.json";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Box, Button, Flex, Tag, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from "react-html-parser";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import Data from "storedata.json";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
+import EnquireModal from "@/components/EnquireModal";
+import Head from "next/head";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import Head from "next/head";
 
-export default function ProductPage() {
+export default function ProductPage({ product, colors }) {
   const router = useRouter();
-  const { name } = router.query;
-  const [product, setProduct] = useState();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [colors, setColors] = useState(null);
-
-  useEffect(() => {
-    console.log(Data);
-    const productFound = Data.find((product) => product.url === "/" + name);
-    setProduct(productFound);
-    if (productFound) {
-      if (productFound.attributes !== null) {
-        if (productFound.attributes.colors) {
-          let colors = productFound.attributes.colors;
-          setColors(colors);
-        }
-      }
-    }
-  }, [name]);
-
-  if (!product) {
-    return "Loading...";
-  }
 
   return (
     <Box>
@@ -61,7 +37,14 @@ export default function ProductPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex mt={0} gap={20} justifyContent="center" wrap="wrap">
+      <Flex
+        mt={0}
+        gap={20}
+        px={3}
+        justifyContent="center"
+        wrap="wrap"
+        position="relative"
+      >
         <Box width={{ base: "100%", sm: "100%", md: "100%", lg: "40%" }}>
           <Swiper
             style={{
@@ -80,7 +63,12 @@ export default function ProductPage() {
             {product.otherImages.map((image, idx) => {
               return (
                 <SwiperSlide key={idx}>
-                  <Image src={image} height={300} width={600} alt={name} />
+                  <Image
+                    src={image}
+                    height={300}
+                    width={600}
+                    alt={product.name}
+                  />
                 </SwiperSlide>
               );
             })}
@@ -98,7 +86,12 @@ export default function ProductPage() {
             {product.otherImages.map((image, idx) => {
               return (
                 <SwiperSlide key={idx}>
-                  <Image src={image} height={500} width={500} alt={name} />
+                  <Image
+                    src={image}
+                    height={500}
+                    width={500}
+                    alt={product.name}
+                  />
                 </SwiperSlide>
               );
             })}
@@ -133,11 +126,36 @@ export default function ProductPage() {
           )}
 
           <Text mt={10}>{ReactHtmlParser(product.description)}</Text>
-          <Button mt={10} variant="solid" colorScheme="green">
-            ENQUIRE NOW
-          </Button>
+          <EnquireModal product={product} colors={colors} />
         </Box>
       </Flex>
     </Box>
   );
+}
+export async function getStaticPaths() {
+  let products = Data;
+  const paths = products.map((product) => {
+    return {
+      params: {
+        name: product.url,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+// This function gets called at build time
+export async function getStaticProps({ params }) {
+  const id = params.name;
+  let product = Data.find((product) => product.url === id);
+  let colors = null;
+  if (product.attributes) {
+    colors = product.attributes.colors;
+  }
+  // Pass post data to the page via props
+  return { props: { product, colors } };
 }

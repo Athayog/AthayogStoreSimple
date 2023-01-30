@@ -11,6 +11,7 @@ import {
   Button,
   Divider,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,16 +25,22 @@ export default function ProductCard({
   url,
 }) {
   return (
-    <Box maxW="sm" border="1px" rounded="lg" borderColor="gray.200">
+    <Box w={{ base: "100%" }} border="1px" rounded="lg" borderColor="gray.200">
       <Box>
-        <Box borderRadius="lg" overflow="hidden">
+        <Flex
+          borderRadius="lg"
+          overflow="hidden"
+          justifyContent="center"
+          direction="column"
+          alignItems="center"
+        >
           <Image
             src={image}
             alt="Green double couch with wooden legs"
             height={250}
             width={250}
           />
-        </Box>
+        </Flex>
         <Divider />
         <Stack mt="2" spacing="3" p={3}>
           <Box>
@@ -46,7 +53,7 @@ export default function ProductCard({
           </Box>
 
           <Box>
-            <Link href={"/product" + url} passHref>
+            <Link href={"/product/" + url} passHref>
               <Button size="sm" width="full" variant="solid" colorScheme="gray">
                 Check Now
               </Button>

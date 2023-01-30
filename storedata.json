@@ -4,7 +4,7 @@
     "name": "Athayog Mat",
     "price": "900",
     "priceType": null,
-    "url": "/athayog-mat",
+    "url": "athayog-mat",
     "image": "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fathayog-mat%2F1.png?alt=media&token=55c56195-6ec1-4f79-9bb4-d226f574e52f",
     "otherImages": [
       "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fathayog-mat%2F1.png?alt=media&token=55c56195-6ec1-4f79-9bb4-d226f574e52f",
@@ -57,7 +57,7 @@
     "name": "Yoga Chair",
     "price": "1850",
     "priceType": null,
-    "url": "/yoga-chair",
+    "url": "yoga-chair",
 
     "image": "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-chair%2F2.png?alt=media&token=396cc00b-1cc8-49e8-8768-6d5f6f6dcaaa",
     "otherImages": [
@@ -75,7 +75,7 @@
       { "id": 1, "type": "single", "text": "each", "price": "499" },
       { "id": 2, "type": "pair", "text": "pair", "price": "999" }
     ],
-    "url": "/yoga-block",
+    "url": "yoga-block",
     "image": "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-block%2F1.png?alt=media&token=1125fad5-9605-4f1f-b09d-d61086b4a04c",
     "otherImages": [
       "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-block%2F1.png?alt=media&token=1125fad5-9605-4f1f-b09d-d61086b4a04c",
@@ -89,7 +89,7 @@
     "name": "Yoga Bolster (with Cover)",
     "price": "1050",
 
-    "url": "/yoga-bolster",
+    "url": "yoga-bolster",
     "image": "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-bolster%2F1.png?alt=media&token=0067581b-7eef-4e74-8b60-46bd043a557c",
     "otherImages": [
       "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-bolster%2F1.png?alt=media&token=0067581b-7eef-4e74-8b60-46bd043a557c",
@@ -103,7 +103,7 @@
     "name": "Yoga Belt",
     "price": "385",
     "priceType": null,
-    "url": "/yoga-belt",
+    "url": "yoga-belt",
     "image": "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-belt%2F1.png?alt=media&token=0da8d2e7-82d3-4182-ad7f-ec3def1d8e20",
     "otherImages": [
       "https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/store%2Fyoga-belt%2F1.png?alt=media&token=0da8d2e7-82d3-4182-ad7f-ec3def1d8e20",
