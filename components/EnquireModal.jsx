@@ -38,7 +38,7 @@ export default function EnquireModal({ product, colors }) {
 
   function onSubmit(values) {
     setIsLoading(true);
-    fetch("https://formsubmit.co/ajax/harsimransinghbarki@gmail.com", {
+    fetch("https://formsubmit.co/ajax/info@athayogliving.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
